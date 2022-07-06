@@ -1,3 +1,0 @@
-# mogomed
-gfdgfdgdf
-jopaME

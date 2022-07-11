@@ -3,7 +3,7 @@ import random
 import discord
 from discord.ext import commands
 
-TOKEN = 'OTk0NTA5MDIyMzg2NDY2ODE3.GQKfVl.OvrS9ZouNzWx50nrOoguLTNdBi_Y9SmGF7PuB8'
+TOKEN = 'OTk0NTA5MDIyMzg2NDY2ODE3.Gnu1l1.owksKirCuIn8qaGZ_YpLPh1UKghdkGXuaLFoXc0'
 bot = commands.Bot(command_prefix='_')
 
 NONSTOP = """ Пошлая молли - "Нон стоп"
@@ -187,6 +187,17 @@ async def on_message(message):
     if message.content.startswith("_ПУТИН РАНДОМ"):
         song = random.choice(all_music)
         await message.channel.send(song)
+
+    import requests
+    import bs4
+    s=requests.get('https://text-pesni.com/pesnya/pokazat/565713750/big-baby-tape-kizaru/tekst-perevod-pesni-dirrt-kizaru/')
+    b=bs4.BeautifulSoup(s.text, "html.parser")
+    chitka=b.select_one('#textParagraph')
+    # print(chitka.text)
+    if message.content.startswith("ПУТИН ЗАЧИТАЙ"):
+        embed = discord.Embed(color=0xf00c89, title="ЩА ЗАЧИТАЮ", type='rich', description=chitka.text)
+        await message.channel.send(embed=embed)
+
 
 
 
